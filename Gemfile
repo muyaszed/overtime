@@ -20,6 +20,7 @@ group :development, :test do
   gem 'rspec-rails', '~>3.0'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'guard-rspec', require: false
 end
 
 group :development do
@@ -28,5 +29,6 @@ group :development do
 
  
   gem 'spring'
+
 end
 
