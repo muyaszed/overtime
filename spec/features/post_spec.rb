@@ -43,7 +43,7 @@ describe 'navigate' do
       fill_in 'post[rationale]', with: "User association"
       click_on "Save"
       expect(User.last.posts.last.rationale).to eq("User association")     
-      # expect(Post.last.user.email).to eq("test@test.com")  
-    end    
+       
+    end       
   end
 end 
