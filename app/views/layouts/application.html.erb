@@ -7,8 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="container">
 
-<%= yield %>
+	<div class="row">
+		<h1>Time tracker</h1>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<%= render 'shared/nav' %>
+			<%= yield %>
+		</div>
+	</div>
+</div>
+
+
 
 </body>
 </html>
