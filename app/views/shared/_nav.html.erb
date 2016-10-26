@@ -16,7 +16,8 @@
 					<ul class="dropdown-menu">
 						<li>
 							<%= link_to "Edit details", edit_user_registration_path %>
-							<a href="#">Action</a>
+							<%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+							
 						</li>
 						
 					</ul>
