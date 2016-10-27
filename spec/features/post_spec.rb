@@ -4,10 +4,11 @@ describe 'navigate' do
   before do
       @user = FactoryGirl.create(:user) 
       login_as(@user, :scope => :user)  
+      
   end
-  context 'index' do
+  context 'view all post' do
   	before do
-       post1 = FactoryGirl.create(:post)
+      post1 = FactoryGirl.create(:post)
       post2 = FactoryGirl.create(:second_post)  
   		visit posts_path
   	end
@@ -42,7 +43,7 @@ describe 'navigate' do
   	it "can be created with new form" do
   		
   		fill_in 'post[date]', with: Date.today
-  		fill_in 'post[rationale]', with: "rationale"
+  		fill_in 'post[rationale]', with: "rationale"  
   		click_on "Save"
  
   		expect(page).to have_content("rationale")   
@@ -56,5 +57,26 @@ describe 'navigate' do
       expect(User.last.posts.last.rationale).to eq("User association")     
        
     end       
+  end
+
+  context "edit post" do
+    before do
+      @post = FactoryGirl.create(:post)
+      visit posts_path
+    end
+
+    it "can be reach by clicking edit on individual post" do
+
+      click_link("edit_#{@post.id}") 
+      expect(page.status_code).to eq(200) 
+    end
+
+    it "can be edited" do 
+      visit edit_post_path(@post)
+      fill_in 'post[rationale]', with: "Updated rationale"
+      click_on 'Update'
+      expect(page).to have_content("Updated rationale")
+
+    end
   end
 end 

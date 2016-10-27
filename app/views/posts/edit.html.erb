@@ -1,0 +1,6 @@
+<%= form_for @post, method: :patch, url: @post do |f| -%>
+	<%= f.date_field :date %>
+	<%= f.text_field :rationale %>
+	<%= f.submit "Update", :disable_with => 'Updating...' %>
+<% end -%>
+
