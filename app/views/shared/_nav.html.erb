@@ -7,19 +7,16 @@
 					<%= link_to "Overtime", posts_path %>
 					
 				</li>
-				<li class="disabled">
-
-					<a href="#">Messages</a>
+				<li class="<%= active(new_post_path) %>">
+					<%= link_to "New Item", new_post_path %>
+					
 				</li>
 				<li class="dropdown pull-right">
 					 <a href="#" data-toggle="dropdown" class="dropdown-toggle">Account<strong class="caret"></strong></a>
 					<ul class="dropdown-menu">
-						<li>
-							<%= link_to "Edit details", edit_user_registration_path %>
-							<%= link_to "Logout", destroy_user_session_path, :method => :delete %>
-							
-						</li>
 						
+							<%= render :partial => "shared/menu_#{account_menu}" %>
+								
 					</ul>
 				</li>
 			</ul>

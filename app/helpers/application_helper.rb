@@ -5,6 +5,12 @@ module ApplicationHelper
 
 	end
 
-
+	def account_menu
+	  if user_signed_in?
+	  		"login"
+	  else
+	  		"logout"
+	  end
+	end
 
 end
