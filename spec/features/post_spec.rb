@@ -33,10 +33,11 @@ describe 'navigate' do
   context "create new post" do
   	before do
       
-      visit new_post_path
+      visit posts_path
+      click_link("new_post")
   	end
   	it "can be reached" do
-  		 
+  		
   		expect(page.status_code).to eq(200)      
   	end    
 
@@ -46,7 +47,7 @@ describe 'navigate' do
   		fill_in 'post[rationale]', with: "rationale"  
   		click_on "Save"
  
-  		expect(page).to have_content("rationale")   
+  		expect(page).to have_content("rationale")    
   	end 
 
     it "will have a user associated" do  
