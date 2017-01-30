@@ -26,6 +26,10 @@ class ApplicationPolicy
     false
   end
 
+  def admin.types
+    ['AdminUser']
+  end
+
   def edit?
     update?
   end

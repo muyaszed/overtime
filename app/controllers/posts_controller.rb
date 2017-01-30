@@ -12,7 +12,7 @@ class PostsController < ApplicationController
 
 	def edit
 		
-
+		authorize @post
 	end
 
 	def show
@@ -21,6 +21,7 @@ class PostsController < ApplicationController
 	end
 
 	def update
+		authorize @post
 		if @post.update(post_params)
 			redirect_to @post, notice: "Your post updated sucessfully"
 		else
