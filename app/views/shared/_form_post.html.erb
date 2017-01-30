@@ -12,17 +12,7 @@
 			<%= f.label :rationale, "Rationale" %>
 			<%= f.text_field :rationale, class: "form-control", id: "exampleInputRationale" %>
 </div>
-<div class="form-group">
-		<%= f.label :status, "Submitted" %>
-		<%= f.radio_button :status, "submitted", id: "submitted" %>
-
-		<%= f.label :status, "Approved" %>
-		<%= f.radio_button :status, "approved", id: "approved" %>
-
-		<%= f.label :status, "Rejected" %>
-		<%= f.radio_button :status, "rejected", id: "rejected" %>
-
-</div>
+<%= render partial: 'status', locals: {f: f} if current_user.type == 'AdminUser'%>
 
 <%= f.submit "Save", :disable_with => 'Saving...', class: "btn btn-default" %>
 <%end%>
