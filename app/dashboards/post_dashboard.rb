@@ -14,6 +14,7 @@ class PostDashboard < Administrate::BaseDashboard
     rationale: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    status: Field::Text,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -23,6 +24,7 @@ class PostDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :user,
+    :status,
     :id,
     :date,
     :rationale,
@@ -46,6 +48,7 @@ class PostDashboard < Administrate::BaseDashboard
     :user,
     :date,
     :rationale,
+    :status,
   ].freeze
 
   # Overwrite this method to customize how posts are displayed

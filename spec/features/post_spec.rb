@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'navigate' do
+describe 'navigate post' do
   before do
       @user = FactoryGirl.create(:user) 
       login_as(@user, :scope => :user)  
@@ -33,9 +33,9 @@ describe 'navigate' do
   context "create new post" do
   	before do
       
-      visit posts_path
+      visit root_path
       click_link("new_post")
-  	end
+  	end 
   	it "can be reached" do
   		
   		expect(page.status_code).to eq(200)      
@@ -75,7 +75,7 @@ describe 'navigate' do
     it "can be edited" do 
       visit edit_post_path(@post)
       fill_in 'post[rationale]', with: "Updated rationale"
-      click_on 'Update'
+      click_on 'Save'
       expect(page).to have_content("Updated rationale")
 
     end

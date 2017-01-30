@@ -1,6 +1,24 @@
-<%= form_for @post, method: :patch, url: @post do |f| -%>
-	<%= f.date_field :date %>
-	<%= f.text_field :rationale %>
-	<%= f.submit "Update", :disable_with => 'Updating...' %>
-<% end -%>
 
+
+<%if @post.errors.any?%>
+
+	<%@post.errors.full_messages.each do |error|%>
+		<%= js add_gritter(error, title: "Overtime App Notification", sticky: false, time: 4000) %>
+
+	<%end%>
+<%end%>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			
+			
+				<%= render '/shared/form_post'%>
+
+				
+				
+				
+			
+		</div>
+	</div>
+</div>
