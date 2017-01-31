@@ -10,6 +10,7 @@ describe 'navigate post' do
   	before do
       post1 = FactoryGirl.create(:post)
       post2 = FactoryGirl.create(:second_post)  
+      
   		visit posts_path
   	end
 
@@ -62,15 +63,13 @@ describe 'navigate post' do
 
   context "edit post" do
     before do
-      @post = FactoryGirl.create(:post)
+
+      @post = Post.create(date: Date.today, rationale: "1234", user_id: @user.id)
+      
       visit posts_path
     end
 
-    it "can be reach by clicking edit on individual post" do
-
-      click_link("edit_#{@post.id}") 
-      expect(page.status_code).to eq(200) 
-    end
+    
 
     it "can be edited" do 
       visit edit_post_path(@post)
@@ -78,6 +77,14 @@ describe 'navigate post' do
       click_on 'Save'
       expect(page).to have_content("Updated rationale")
 
+    end
+
+    it "cannot be edited by non authorized person" do 
+      logout(:user)
+      non_authorized_user = FactoryGirl.create(:non_authorized_user) 
+      login_as(non_authorized_user, :scope => :user)
+      visit edit_post_path(@post)
+      expect(current_path).to eq(root_path) 
     end
   end
 
